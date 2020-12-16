@@ -1,13 +1,22 @@
-import './App.css';
+import React, {useState} from "react";
+import Catalog from "./components/Catalog";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
+    const [rows, setRows] = useState([
+        {
+            id: 1,
+            title: 'Автоматический выключатель',
+            vendor: 'ABB',
+            pack:100,
+            price:1500,
+        },
+    ]);
 
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Catalog rows={rows}/>
+        </div>
+    );
 }
 
 export default App;
