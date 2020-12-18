@@ -1,7 +1,9 @@
 import React, {useContext} from "react";
 import {ContextApp} from "../hooks/reducer";
-import CatalogItem from "./CatalogItem";
+import { Link } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
+
+import CatalogItem from "./CatalogItem";
 
 const useStyles = makeStyles({
     wrapper: {
@@ -32,7 +34,7 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'flex-start',
         fontFamily: 'Roboto, sans-serif',
-        color: 'gray',
+        color: 'black',
         padding: '5px 0 5px'
     },
     header_title: {
@@ -87,14 +89,16 @@ function Catalog() {
             </div>
             <div className={classes.body}>
                 {state.app.rows.map(item =>
-                    <CatalogItem
-                        className={classes.item}
-                        key={item.id}
-                        title={item.title}
-                        vendor={item.vendor}
-                        pack={item.pack}
-                        price={item.price}
-                    />
+                    <Link to={`/detail` + item.id}>
+                        <CatalogItem
+                            className={classes.item}
+                            key={item.id}
+                            title={item.title}
+                            vendor={item.vendor}
+                            pack={item.pack}
+                            price={item.price}
+                        />
+                    </Link>
                 )}
             </div>
         </section>

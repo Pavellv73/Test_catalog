@@ -68,7 +68,7 @@ export const initialState = {
             price: 3800
           },
           {
-            id: '00010',
+            id: '10',
             title: 'Лоток для систем освещения',
             vendor: 'Schneider Electric',
             pack: 1,
