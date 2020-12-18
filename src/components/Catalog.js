@@ -11,6 +11,45 @@ const useStyles = makeStyles({
         flexWrap: 'wrap',
         paddingTop: '20px'
     },
+    title: {
+        font: '500 20px/22px Roboto, sans-serif'
+    },
+    filter: {
+        width: '100%',
+        margin: '10px 0 10px',
+
+        '& span': {
+            marginRight: '20px'
+        }
+    },
+    filter_button: {
+        padding: '5px 10px',
+        border: '1px solid #000',
+        borderRadius: '10px'
+    },
+    header: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'flex-start',
+        fontFamily: 'Roboto, sans-serif',
+        color: 'gray',
+        padding: '5px 0 5px'
+    },
+    header_title: {
+        width: '50%'
+    },
+    header_vendor: {
+        width: '30%',
+        textAlign: 'center'
+    },
+    header_pack: {
+        width: '10%',
+        textAlign: 'center'
+    },
+    header_price: {
+        width: '10%',
+        textAlign: 'center'
+    },
     body: {
         width: '100%',
         marginTop: '20px'
@@ -24,7 +63,7 @@ function Catalog() {
     if (!state.app.rows.length) {
         return (
             <section className={classes.wrapper}>
-                <h1>Список товаров</h1>
+                <h1 className={classes.title}>Список товаров</h1>
                 <p>Список пуст</p>
             </section>
         )
@@ -32,7 +71,20 @@ function Catalog() {
 
     return (
         <section className={classes.wrapper}>
-            <h1>Список товаров</h1>
+            <h1 className={classes.title}>Список товаров</h1>
+            <div className={classes.filter}>
+                <span>Фильтровать по:</span>
+                <button 
+                    className={classes.filter_button} 
+                    onClick={() => console.log(state)}
+                >Цене</button>
+            </div>
+            <div className={classes.header}>
+                <h4 className={classes.header_title}>Название</h4>
+                <span className={classes.header_vendor}>Продавец</span>
+                <span className={classes.header_pack}>Упаковка</span>
+                <span className={classes.header_price}>Цена</span>
+            </div>
             <div className={classes.body}>
                 {state.app.rows.map(item =>
                     <CatalogItem

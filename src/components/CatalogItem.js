@@ -1,4 +1,3 @@
-import { grey } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -23,12 +22,15 @@ const useStyles = makeStyles({
     },
     vendor: {
         width: '30%',
+        textAlign: 'center',
     },
     pack: {
         width: '10%',
+        textAlign: 'center'
     },
     price: {
         width: '10%',
+        textAlign: 'center'
     },
 });
 
