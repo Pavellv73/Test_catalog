@@ -1,12 +1,26 @@
-import './styles.scss';
+import React, {useContext} from "react";
+import {ContextApp} from "../../hooks/reducer";
 import CatalogItem from "./CatalogItem";
-import { BrowserRouter  } from 'react-router-dom'
 
-function Catalog({rows}) {
+import './styles.scss';
+
+function Catalog() {
+    const {state} = useContext(ContextApp);
+
+    if (!state.app.rows.length) {
+        return (
+            <section className="catalog">
+                <h1 className="catalog__title">Список товаров</h1>
+                <p>Список пуст</p>
+            </section>
+        )
+    }
+
     return (
         <section className="catalog">
-            <BrowserRouter >
-                {rows.map(item =>
+            <h1 className="catalog__title">Список товаров</h1>
+            <div className="catalog__body">
+                {state.app.rows.map(item =>
                     <CatalogItem
                         className="catalog__item"
                         key={item.id}
@@ -16,7 +30,7 @@ function Catalog({rows}) {
                         price={item.price}
                     />
                 )}
-            </BrowserRouter >
+            </div>
         </section>
     );
 }

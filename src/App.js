@@ -1,21 +1,14 @@
-import React, {useState} from "react";
+import React, { useReducer } from "react";
+import { ContextApp, rowsReducer, initialState} from './hooks/reducer'
 import Catalog from "./components/Catalog";
 
 function App() {
-    const [rows, setRows] = useState([
-        {
-            id: 1,
-            title: 'Автоматический выключатель',
-            vendor: 'ABB',
-            pack:100,
-            price:1500,
-        },
-    ]);
+    const [state, dispatch] = useReducer(rowsReducer, initialState);
 
     return (
-        <div className="App">
-            <Catalog rows={rows}/>
-        </div>
+        <ContextApp.Provider value={{dispatch, state}}>
+            <Catalog />
+        </ContextApp.Provider>
     );
 }
 
