@@ -1,28 +1,42 @@
 import React, {useContext} from "react";
-import {ContextApp} from "../../hooks/reducer";
+import {ContextApp} from "../hooks/reducer";
 import CatalogItem from "./CatalogItem";
+import { makeStyles } from '@material-ui/core/styles';
 
-import './styles.scss';
+const useStyles = makeStyles({
+    wrapper: {
+        width: '80%',
+        margin: '0 auto;',
+        display: 'flex',
+        flexWrap: 'wrap',
+        paddingTop: '20px'
+    },
+    body: {
+        width: '100%',
+        marginTop: '20px'
+    },
+});
 
 function Catalog() {
     const {state} = useContext(ContextApp);
+    const classes = useStyles();
 
     if (!state.app.rows.length) {
         return (
-            <section className="catalog">
-                <h1 className="catalog__title">Список товаров</h1>
+            <section className={classes.wrapper}>
+                <h1>Список товаров</h1>
                 <p>Список пуст</p>
             </section>
         )
     }
 
     return (
-        <section className="catalog">
-            <h1 className="catalog__title">Список товаров</h1>
-            <div className="catalog__body">
+        <section className={classes.wrapper}>
+            <h1>Список товаров</h1>
+            <div className={classes.body}>
                 {state.app.rows.map(item =>
                     <CatalogItem
-                        className="catalog__item"
+                        className={classes.item}
                         key={item.id}
                         title={item.title}
                         vendor={item.vendor}
